@@ -25,6 +25,8 @@
 		EE79FCAC20D90C8B0074EBAC /* AAHighchartsLib.js in Resources */ = {isa = PBXBuildFile; fileRef = EE79FCA320D90C8B0074EBAC /* AAHighchartsLib.js */; };
 		EE79FCAD20D90C8B0074EBAC /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = EE79FCA420D90C8B0074EBAC /* AAHighchartsMore.js */; };
 		EE79FCAE20D90C8B0074EBAC /* AAOptionsConstructor.js in Resources */ = {isa = PBXBuildFile; fileRef = EE79FCA520D90C8B0074EBAC /* AAOptionsConstructor.js */; };
+		EE79FCB120DA26D20074EBAC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79FCB020DA26D20074EBAC /* BaseViewController.swift */; };
+		EE79FCB420DA322B0074EBAC /* GlobalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE79FCB320DA322B0074EBAC /* GlobalInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		EE79FCA320D90C8B0074EBAC /* AAHighchartsLib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsLib.js; sourceTree = "<group>"; };
 		EE79FCA420D90C8B0074EBAC /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
 		EE79FCA520D90C8B0074EBAC /* AAOptionsConstructor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAOptionsConstructor.js; sourceTree = "<group>"; };
+		EE79FCB020DA26D20074EBAC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		EE79FCB320DA322B0074EBAC /* GlobalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalInfo.swift; sourceTree = "<group>"; };
 		F6729729515BE8AB6B63EB5D /* Pods_CareWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -157,6 +161,7 @@
 		EE42949A20D3ADB700376C56 /* AppFrame */ = {
 			isa = PBXGroup;
 			children = (
+				EE79FCAF20DA26BB0074EBAC /* Base */,
 				EE42948420D203A100376C56 /* AppDelegate.swift */,
 			);
 			path = AppFrame;
@@ -260,6 +265,7 @@
 		EE79FC9020D899A30074EBAC /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				EE79FCB220DA320F0074EBAC /* GlobalInfo */,
 				EE42949620D3AD7C00376C56 /* City */,
 				EE42949720D3AD7C00376C56 /* Detail */,
 				EE42949920D3AD7C00376C56 /* Home */,
@@ -298,6 +304,22 @@
 				EE79FCA520D90C8B0074EBAC /* AAOptionsConstructor.js */,
 			);
 			path = AAJSFiles;
+			sourceTree = "<group>";
+		};
+		EE79FCAF20DA26BB0074EBAC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EE79FCB020DA26D20074EBAC /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EE79FCB220DA320F0074EBAC /* GlobalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				EE79FCB320DA322B0074EBAC /* GlobalInfo.swift */,
+			);
+			path = GlobalInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,7 +463,9 @@
 				EE79FCA620D90C8B0074EBAC /* AAChartModel.swift in Sources */,
 				EE79FCA720D90C8B0074EBAC /* AAChartView.swift in Sources */,
 				EE79FCA920D90C8B0074EBAC /* AASeriesElement.swift in Sources */,
+				EE79FCB420DA322B0074EBAC /* GlobalInfo.swift in Sources */,
 				EE79FC9420D89B870074EBAC /* WeatherDetailView.swift in Sources */,
+				EE79FCB120DA26D20074EBAC /* BaseViewController.swift in Sources */,
 				EE79FC9720D8E35E0074EBAC /* Configuration.swift in Sources */,
 				EE79FC9220D89B2C0074EBAC /* WeatherView.swift in Sources */,
 				EE42948720D203A100376C56 /* HomeVC.swift in Sources */,

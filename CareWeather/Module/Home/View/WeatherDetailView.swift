@@ -31,7 +31,7 @@ class WeatherDetailView: UIView {
         let label = UILabel ()
         return label
     }()
-    
+
     
 
 }

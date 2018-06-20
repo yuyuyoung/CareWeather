@@ -12,7 +12,7 @@ public enum Season {
     case Spring
     case Summer
     case Autumn
-    case winter
+    case Winter
 }
 
 public enum Gender {
@@ -25,7 +25,13 @@ public let Main_Gray = #colorLiteral(red: 0.9411764706, green: 0.9568627451, blu
 public let Main_Blue = #colorLiteral(red: 0.1843137255, green: 0.5019607843, blue: 0.9647058824, alpha: 1)
 public let Main_Word_Color = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
 public let Light_Word_Color = #colorLiteral(red: 0.568627451, green: 0.568627451, blue: 0.568627451, alpha: 1)
-public let Left_Space = 20.0
+
+public let Summer_Color = #colorLiteral(red: 0.7647058824, green: 0.8862745098, blue: 0.9882352941, alpha: 1)
+public let Spring_Color = #colorLiteral(red: 0.7647058824, green: 0.8862745098, blue: 0.9882352941, alpha: 1)
+public let Autumn_Color = #colorLiteral(red: 0.9921568627, green: 0.8745098039, blue: 0.7568627451, alpha: 1)
+public let Winter_Color = #colorLiteral(red: 0.7647058824, green: 0.8862745098, blue: 0.9882352941, alpha: 1)
+
+public let Left_Space: CGFloat = 20.0
 public let StatuBar_H = UIApplication.shared.statusBarFrame.height
 public let Screen_W = UIScreen.main.bounds.width
 public let Screen_H = UIScreen.main.bounds.height

@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class HomeVC: UIViewController {
+class HomeVC: BaseViewController {
     
     lazy var menuButton: UIButton = {
         let button = UIButton(type: UIButtonType.custom)
@@ -34,11 +34,17 @@ class HomeVC: UIViewController {
     
     lazy var timeLabel: UILabel = {
         let label = UILabel()
+        label.font = UIBoldFontFromPixel(pixel: 30)
+        label.textColor = Main_Word_Color
+        label.text = "早上好小明！"
         return label
     }()
     
     lazy var greetingsLabel: UILabel = {
         let label = UILabel()
+        label.font = UIBoldFontFromPixel(pixel: 30)
+        label.textColor = Main_Word_Color
+        label.text = "今天又是一个好天气"
         return label
     }()
     
@@ -66,7 +72,7 @@ class HomeVC: UIViewController {
         self.view.addSubview(self.detailButton)
         self.view.addSubview(self.timeLabel)
         self.view.addSubview(self.greetingsLabel)
-        
+        self.view.addSubview(self.mainWeatherView)
         
         self.menuButton.snp.makeConstraints { (make) in
             make.top.equalTo(self.view).offset(StatuBar_H + 20)
@@ -82,19 +88,27 @@ class HomeVC: UIViewController {
             make.height.equalTo(20)
         }
         
-        self.timeLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(StatuBar_H + 20)
+        self.mainWeatherView.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.view)
             make.left.equalTo(self.view).offset(Left_Space)
-            make.width.equalTo(30)
+            make.width.equalTo(self.view).offset(-20)
+            make.height.equalTo(110)
+        }
+        
+        self.timeLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.mainWeatherView.snp.top).offset(-100)
+            make.left.equalTo(self.mainWeatherView)
+            make.width.equalTo(Screen_W - Left_Space * 2)
             make.height.equalTo(15)
         }
         
         self.greetingsLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(100)
-            make.left.equalTo(self.view).offset(Left_Space)
-            make.width.equalTo(30)
+            make.top.equalTo(self.timeLabel.snp.bottom).offset(12)
+            make.left.equalTo(self.timeLabel)
+            make.width.equalTo(self.timeLabel)
             make.height.equalTo(15)
         }
+        
     }
 
     @objc func buttonPressed(sender: UIButton) {

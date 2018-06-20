@@ -45,7 +45,7 @@ class WeatherView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = Main_Blue
+        self.backgroundColor = Main_Gray
     }
     
     required init?(coder aDecoder: NSCoder) {
