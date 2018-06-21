@@ -73,6 +73,7 @@ class HomeVC: BaseViewController {
         self.view.addSubview(self.timeLabel)
         self.view.addSubview(self.greetingsLabel)
         self.view.addSubview(self.mainWeatherView)
+        self.view.addSubview(self.pullTab)
         
         self.menuButton.snp.makeConstraints { (make) in
             make.top.equalTo(self.view).offset(StatuBar_H + 20)
@@ -92,7 +93,14 @@ class HomeVC: BaseViewController {
             make.centerY.equalTo(self.view)
             make.left.equalTo(self.view).offset(Left_Space)
             make.width.equalTo(self.view).offset(-20)
-            make.height.equalTo(110)
+            make.height.equalTo(120)
+        }
+        
+        self.pullTab.snp.makeConstraints { (make) in
+            make.top.equalTo(self.mainWeatherView.snp.bottom).priority(100)
+            make.centerX.equalTo(self.mainWeatherView)
+            make.width.equalTo(15)
+            make.height.equalTo(25)
         }
         
         self.timeLabel.snp.makeConstraints { (make) in

@@ -45,6 +45,13 @@ class WeatherView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        let shapeLayer = CAShapeLayer ()
+        let path = UIBezierPath.init(roundedRect: CGRect(x: 0, y: 0, width: Screen_W - 20, height: 120), byRoundingCorners: [.topLeft ,.bottomLeft], cornerRadii: CGSize(width: 8, height: 8))
+        path.fill()
+        shapeLayer.path = path.cgPath
+        shapeLayer.fillColor = UIColor.black.cgColor
+        self.layer.mask = shapeLayer
         self.backgroundColor = Main_Gray
     }
     
