@@ -35,14 +35,23 @@ class WeatherDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layer.cornerRadius = 5
-        self.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        self.layer.shadowOffset = CGSize(width: 0, height: 2);
-        self.layer.shadowOpacity = 3
+        self.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        self.layer.shadowOffset = CGSize(width: 1, height: 2);
+        self.layer.shadowOpacity = 2
+        self.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: Screen_W - 50, height: 120), cornerRadius: 5).cgPath
         self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func updateConstraints() {
+        
+        
+        
+        super.updateConstraints()
+    }
+    
 
 }
