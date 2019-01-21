@@ -29,7 +29,7 @@ final class GlobalInfo: NSObject {
         case 12, 1, 2:
             return .Winter
         default:
-            return .Winter
+            return .Summer
         }
     }()
     

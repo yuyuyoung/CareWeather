@@ -9,9 +9,10 @@
 import UIKit
 import SnapKit
 
-class HomeVC: BaseViewController, UIGestureRecognizerDelegate {
+class HomeVC: BaseViewController, UIGestureRecognizerDelegate, UINavigationControllerDelegate {
     
     var startY: CGFloat = 0.0
+    var needCustomerAnimation: Bool = false
     
     lazy var menuButton: UIButton = {
         let button = UIButton(type: UIButtonType.custom)
@@ -56,7 +57,7 @@ class HomeVC: BaseViewController, UIGestureRecognizerDelegate {
         let button = UIButton(type: UIButtonType.custom)
         button.center = CGPoint(x: Screen_W - 40, y: Screen_H - 60)
         button.bounds = CGRect(x: 0, y: 0, width: 60, height: 60)
-        button.setImage(UIImage(named: "Share"), for: .normal)
+        button.setImage(UIImage(named: "Share_Selected"), for: .normal)
         button.addTarget(self, action: #selector(shareWithSomeone(sender:)), for: .touchUpInside)
         return button
     }()
@@ -77,7 +78,14 @@ class HomeVC: BaseViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.delegate = self
         self.initializeUserInterface()
+        
+        let weatherInfo = WeatherInfo()
+        weatherInfo.getInfo()
+        
+        self.addObserver(weatherInfo, forKeyPath: "weatherModel", options: .new, context: nil)
+        
     }
     
     func initializeUserInterface() {
@@ -141,14 +149,25 @@ class HomeVC: BaseViewController, UIGestureRecognizerDelegate {
         
     }
     
+    //KVO
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if (keyPath == "weatherModel") {
+            
+        }
+    }
+    
     //MARK: Handle Interactions
 
     @objc func buttonPressed(sender: UIButton) {
-        
+        needCustomerAnimation = true
+        let cityVC = CityVC()
+        self.navigationController?.pushViewController(cityVC, animated: true)
     }
     
     @objc func nextPage(sender: UIButton) {
-        
+        needCustomerAnimation = false
+        let detailVC = DetailVC()
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     @objc func toDetail(sender: UIPanGestureRecognizer) {
@@ -200,6 +219,7 @@ class HomeVC: BaseViewController, UIGestureRecognizerDelegate {
     
     @objc func shareWithSomeone(sender:UIButton) {
         
+        
     }
     
     //MARK: - UIGestureRecognizerDelegate
@@ -210,6 +230,22 @@ class HomeVC: BaseViewController, UIGestureRecognizerDelegate {
             startY = sender.translation(in: self.view).y
         }
         return true
+    }
+    
+    //MARK: - UINavigationControllerDelegate
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        if needCustomerAnimation {
+            let transitioning = AnimationTransitions()
+            transitioning.operation = operation
+            
+            return transitioning
+        }else {
+            return nil
+        }
+        
+        
     }
 
 
