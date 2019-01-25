@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5A83D56921F4956B00BA8F68 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A83D56821F4956B00BA8F68 /* WeatherModel.swift */; };
 		5A83D57021F4DF4E00BA8F68 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A83D56F21F4DF4E00BA8F68 /* NetworkingManager.swift */; };
+		5A83D57221F6D13500BA8F68 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A83D57121F6D13500BA8F68 /* Address.plist */; };
 		78869FBDEA66F7A665E57021 /* Pods_CareWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6729729515BE8AB6B63EB5D /* Pods_CareWeather.framework */; };
 		EE42948520D203A100376C56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42948420D203A100376C56 /* AppDelegate.swift */; };
 		EE42948720D203A100376C56 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42948620D203A100376C56 /* HomeVC.swift */; };
@@ -40,6 +41,7 @@
 		576116567FB3D5E513C3B5E9 /* Pods-CareWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-CareWeather/Pods-CareWeather.release.xcconfig"; sourceTree = "<group>"; };
 		5A83D56821F4956B00BA8F68 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		5A83D56F21F4DF4E00BA8F68 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		5A83D57121F6D13500BA8F68 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		615F7F17B8A5B970C325F737 /* Pods-CareWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CareWeather/Pods-CareWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		EE42948120D203A100376C56 /* CareWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE42948420D203A100376C56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				EE79FC9820D8FFD90074EBAC /* Assets.xcassets */,
 				EE42948D20D203C200376C56 /* LaunchScreen.storyboard */,
 				EE42949020D203C200376C56 /* Info.plist */,
+				5A83D57121F6D13500BA8F68 /* Address.plist */,
 			);
 			path = CareWeather;
 			sourceTree = "<group>";
@@ -363,7 +366,6 @@
 				EE42947E20D203A100376C56 /* Frameworks */,
 				EE42947F20D203A100376C56 /* Resources */,
 				E9D0AA693DD9BDB4CCFF61B7 /* [CP] Embed Pods Frameworks */,
-				638B3CD92934111E051C0C3F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -415,6 +417,7 @@
 				EE42948F20D203C200376C56 /* LaunchScreen.storyboard in Resources */,
 				EE79FCAB20D90C8B0074EBAC /* AAFunnel.js in Resources */,
 				EE79FC9920D8FFD90074EBAC /* Assets.xcassets in Resources */,
+				5A83D57221F6D13500BA8F68 /* Address.plist in Resources */,
 				EE79FCAC20D90C8B0074EBAC /* AAHighchartsLib.js in Resources */,
 				EE79FCAA20D90C8B0074EBAC /* AAChartView.html in Resources */,
 				EE79FCAD20D90C8B0074EBAC /* AAHighchartsMore.js in Resources */,
@@ -426,21 +429,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		638B3CD92934111E051C0C3F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CareWeather/Pods-CareWeather-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DFD3B40288BC9ECF8E884498 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -468,16 +456,20 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-CareWeather/Pods-CareWeather-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

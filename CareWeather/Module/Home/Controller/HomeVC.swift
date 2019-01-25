@@ -53,6 +53,21 @@ class HomeVC: BaseViewController, UIGestureRecognizerDelegate, UINavigationContr
         return label
     }()
     
+    lazy var updateTimeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIBoldFontFromPixel(pixel: 30)
+        label.textColor = Main_Word_Color
+        label.text = "5秒前更新"
+        return label
+    }()
+    
+    lazy var updateButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFontFromPixel(pixel: 16)
+        button.addTarget(self, action: #selector(updateWeatherData(sender:)), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var shareButton: UIButton = {
         let button = UIButton(type: UIButtonType.custom)
         button.center = CGPoint(x: Screen_W - 40, y: Screen_H - 60)
@@ -75,13 +90,14 @@ class HomeVC: BaseViewController, UIGestureRecognizerDelegate, UINavigationContr
         view.alpha = 0.2
         return view
     }()
+    
+    let weatherInfo = WeatherInfo()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.delegate = self
         self.initializeUserInterface()
         
-        let weatherInfo = WeatherInfo()
         weatherInfo.getInfo()
         
         self.addObserver(weatherInfo, forKeyPath: "weatherModel", options: .new, context: nil)
@@ -153,6 +169,9 @@ class HomeVC: BaseViewController, UIGestureRecognizerDelegate, UINavigationContr
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if (keyPath == "weatherModel") {
             
+            if let model = object as? WeatherModel {
+                self.mainWeatherView.updateUIData(model.result.today.temperature, city: model.result.today.city, precipitationProbability: model.result.today.wind, airQuality: model.result.today.comfort_index)
+            }
         }
     }
     
@@ -164,10 +183,17 @@ class HomeVC: BaseViewController, UIGestureRecognizerDelegate, UINavigationContr
         self.navigationController?.pushViewController(cityVC, animated: true)
     }
     
+    @objc func updateWeatherData (sender: UIButton) {
+        let weatherInfo = WeatherInfo()
+        weatherInfo.getInfo()
+    }
+    
     @objc func nextPage(sender: UIButton) {
         needCustomerAnimation = false
-        let detailVC = DetailVC()
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        if let model = self.weatherInfo.weatherModel {
+            let detailVC = DetailVC(model: model.result.future)
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
     
     @objc func toDetail(sender: UIPanGestureRecognizer) {

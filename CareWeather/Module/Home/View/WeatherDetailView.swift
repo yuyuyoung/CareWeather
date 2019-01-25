@@ -16,12 +16,12 @@ class WeatherDetailView: UIView {
         let label = UILabel ()
         label.textColor = Main_Blue
         label.font = UIBoldFontFromPixel(pixel: 24)
-        label.text = "26 - 30"
+        label.text = "00 - 00"
         label.textAlignment = .center
         return label
     }()
-    //    紫外线强度
-    lazy var ultravioletIntensity: UILabel = {
+    //    风力强度
+    lazy var windIntensity: UILabel = {
         let label = UILabel ()
         return label
     }()
@@ -31,7 +31,7 @@ class WeatherDetailView: UIView {
         return label
     }()
     
-    //    防晒提示
+    //    防晒指数
     lazy var sunscreenTip: UILabel = {
         let label = UILabel ()
         return label
@@ -63,7 +63,7 @@ class WeatherDetailView: UIView {
         self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         self.addSubview(self.temperatureRange)
-        self.addSubview(self.ultravioletIntensity)
+        self.addSubview(self.windIntensity)
         self.addSubview(self.precipitationProbability)
         self.addSubview(self.sunscreenTip)
         self.addSubview(self.lifeTips)
@@ -104,5 +104,10 @@ class WeatherDetailView: UIView {
         super.updateConstraints()
     }
     
+    public func updateUIData(_ temperatureRange:String, precipitationProbability:String, lifeTips: String, windIntensity: String, UVIndex: String) {
+        
+        
+        
+    }
 
 }

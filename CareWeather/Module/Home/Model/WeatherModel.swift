@@ -82,9 +82,7 @@ class WeatherInfo: NSObject {
         }) { (error) in
             print(error)
         }
-        
     }
-    
 }
 
 extension String {

@@ -53,7 +53,7 @@ class WeatherView: UIView {
 //    图片
     lazy var picture: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        imageView.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         return imageView
     }()
     
@@ -94,7 +94,7 @@ class WeatherView: UIView {
         }
         
         self.Celsius.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.temperature).offset(5)
+            make.centerY.equalTo(self.temperature).offset(3)
             make.left.equalTo(self.temperature.snp.right)
             make.width.equalTo(28)
             make.height.equalTo(30)
@@ -130,6 +130,10 @@ class WeatherView: UIView {
         }
         
         super.updateConstraints()
+    }
+    
+    public func updateUIData(_ temp: String, city: String, precipitationProbability: String, airQuality: String) {
+        
     }
     
 }

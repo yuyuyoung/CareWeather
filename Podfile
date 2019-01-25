@@ -9,4 +9,5 @@ target 'CareWeather' do
   pod 'Alamofire', '~> 4.7'
   pod 'Kingfisher', '~> 4.0'
   pod 'RealmSwift'
+  pod 'Moya', '~> 12.0'
 end

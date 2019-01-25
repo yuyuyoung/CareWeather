@@ -65,6 +65,8 @@ public class NetworkingManager {
     
 }
 
+
+//MARK: weather
 extension NetworkingManager {
     
     public class func getWeatherInfo(_ city: String, success: @escaping HTTPSuccessBlock, failure: @escaping HTTPFailureBlock) {
