@@ -81,9 +81,6 @@ class DetailVC: BaseViewController {
             
             self.aaChart.aa_drawChartWithChartModel(chartModel)
         }
-        
-        
-        
     }
     
     init(model: [WeatherModel.Result.Future]) {

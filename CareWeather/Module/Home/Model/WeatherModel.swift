@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Moya
 
 struct WeatherModel: Codable {
     var resultcode: String
@@ -71,16 +72,22 @@ class WeatherInfo: NSObject {
     
     public func getInfo() {
         
-        NetworkingManager.getWeatherInfo("成都".URLEncode()!, success: { (respond) in
+        let provider = MoyaProvider<NetAPI>()
+        provider.request(.cityWeather(city:"成都")) { result in
             
-            let decoder = JSONDecoder()
+            switch result {
+                
+            case let .success(response):
+                
+                let data = response.data
+                let decoder = JSONDecoder()
+                let weatherInfo: WeatherModel  = try! decoder.decode(WeatherModel.self, from:data)
+                print(weatherInfo.result.today.dressing_advice)
+                
+            case let .failure(error):
+                print (error.localizedDescription)
+            }
             
-            let weatherInfo: WeatherModel  = try! decoder.decode(WeatherModel.self, from: respond)
-            
-            print(weatherInfo.result.today.dressing_advice)
-            
-        }) { (error) in
-            print(error)
         }
     }
 }

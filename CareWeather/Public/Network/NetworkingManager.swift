@@ -7,74 +7,41 @@
 //
 
 import Foundation
-import Alamofire
+import Moya
 
-public typealias HTTPSuccessBlock = (_ result : Data) -> Void
-public typealias HTTPFailureBlock = (_ error : Error) -> Void
-
-public class NetworkingManager {
-    
-    class func post(_ url:String, paramters: [String : Any], success: @escaping HTTPSuccessBlock, failure: @escaping HTTPFailureBlock) {
-        
-        guard let Url = URL(string: url) else {
-            return
-        }
-        
-        Alamofire.request(Url, method: .post, parameters: paramters, encoding: JSONEncoding.default, headers: nil).downloadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
-            print("Progress: \(progress.fractionCompleted)")
-            }.responseJSON { response in
-                
-                switch response.result {
-                case .success(let vaule):
-                    
-                    let data : Data = try! JSONSerialization.data(withJSONObject: vaule, options: []) as Data
-                    print(vaule)
-                    success(data)
-                    
-                case .failure(let error):
-                    failure(error)
-                }
-                
-        }
-        
-    }
-    
-    class func get(_ url: String, success: @escaping HTTPSuccessBlock, failure: @escaping HTTPFailureBlock) {
-        
-        guard let Url = URL(string: url) else {
-            return
-        }
-        
-        Alamofire.request(Url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (respond) in
-            
-            switch respond.result {
-            case .success(let value):
-                
-                let data : Data = try! JSONSerialization.data(withJSONObject: value, options: []) as Data
-                print(value)
-                success(data)
-
-                
-            case .failure(let error):
-                failure(error)
-            }
-            
-        }
-        
-    }
-    
+enum NetAPI {
+    case cityWeather(city: String)
 }
 
 
-//MARK: weather
-extension NetworkingManager {
-    
-    public class func getWeatherInfo(_ city: String, success: @escaping HTTPSuccessBlock, failure: @escaping HTTPFailureBlock) {
-        
-        let url = "http://v.juhe.cn/weather/index?format=2&cityname=\(city.utf8)&key=\(JH_APPKEY)"
-        
-        get(url, success: success, failure: failure)
-        
+extension NetAPI: TargetType {
+    var sampleData: Data {
+        return "".data(using: String.Encoding.utf8)!
     }
     
+    var baseURL: URL { return URL(string: "http://v.juhe.cn/")! }
+    var path: String {
+        switch self {
+        case .cityWeather:
+            return "weather/index"
+        }
+    }
+    
+    var method: Moya.Method {
+        switch self {
+        case .cityWeather:
+            return .get
+        }
+    }
+    
+    var task: Task {
+        switch self {
+        case .cityWeather(let city): // Send no parameters
+            return .requestParameters(parameters: ["format":2, "cityname": city, "key":JH_APPKEY], encoding: URLEncoding.default)
+        }
+    }
+    
+    var headers: [String: String]? {
+        return ["Content-type": "application/json"]
+    }
 }

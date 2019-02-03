@@ -100,6 +100,8 @@ class HomeVC: BaseViewController, UIGestureRecognizerDelegate, UINavigationContr
         
         weatherInfo.getInfo()
         
+        
+        
         self.addObserver(weatherInfo, forKeyPath: "weatherModel", options: .new, context: nil)
         
     }
